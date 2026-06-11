@@ -8,9 +8,8 @@ def generate_log(data):
     # STEP 1: Validate input
     # Hint: Check if data is a list
     if not isinstance(data, list):
-        raise TypeError("Input data must be a list")
+        raise ValueError("Input data must be a list")
 
-    log_data = ["User logged in","User updated profile", "Report exported"]
 
     # STEP 2: Generate a filename with today's date (e.g., "log_20250408.txt")
     # Hint: Use datetime.now().strftime("%Y%m%d")
@@ -20,12 +19,13 @@ def generate_log(data):
     # Use a with open() block and write each line from the data list
     # Example: file.write(f"{entry}\n")
     with open(filename, 'w') as file:
-        for entry in log_data:
+        for entry in data:
             file.write(f"{entry}\n")
 
     # STEP 4: Print a confirmation message with the filename
     print(f"Log written to {filename}")
 
+    return filename
     pass
 
 def fetch_data():
